@@ -1,11 +1,12 @@
 package com.alex.myHungryHero.mvcs.mediators
 {
-	import com.croco2dMGE.CrocoBootStrap;
+	import com.croco2dMGE.bootStrap.CrocoBootStrap;
 	import com.ponyMVC.Mediator;
 	
 	import feathers.controls.ScreenNavigator;
 	import feathers.core.FeathersControl;
 	
+	import starling.core.Starling;
 	import starling.events.Event;
 
 	public class AppMediator extends Mediator
@@ -19,7 +20,7 @@ package com.alex.myHungryHero.mvcs.mediators
 		
 		override public function onRegister():void
 		{
-			starlingRoot = CrocoBootStrap(context).starlingRoot;
+			starlingRoot = ScreenNavigator(Starling.current.root);
 			starlingRoot.addEventListener(Event.CHANGE, screenNavigatorChangedhandler);
 		}
 		

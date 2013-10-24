@@ -4,10 +4,8 @@ package
 	import com.alex.myHungryHero.screens.AboutScreen;
 	import com.alex.myHungryHero.screens.GameScreen;
 	import com.alex.myHungryHero.screens.WelecomScreen;
-	import com.croco2dMGE.CrocoBootStrapConfig;
+	import com.croco2dMGE.bootStrap.CrocoBootStrapConfig;
 	import com.fireflyLib.debug.Logger;
-	
-	import flash.geom.Rectangle;
 	
 	import starling.utils.AssetManager;
 
@@ -19,7 +17,6 @@ package
 			
 			Logger.startup();
 			
-			CrocoBootStrapConfig.screenViewPort = new Rectangle(0, 0, 1024, 768);
 			CrocoBootStrapConfig.backgroundColor = 0x000000;
 			CrocoBootStrapConfig.frameRate = 60;
 //			CrocoBootStrapConfig.themeClass = MetalWorksMobileTheme;
@@ -32,7 +29,7 @@ package
 			];
 			
 			CrocoBootStrapConfig.extentions = [
-				["AssetManager", AssetManager, [CrocoBootStrapConfig.assetsScaleFactor, CrocoBootStrapConfig.assetsUseMipMaps]],
+				["AssetManager", AssetManager],
 				["AppMVCFacade", AppFacade, [context]]
 			];
 		}

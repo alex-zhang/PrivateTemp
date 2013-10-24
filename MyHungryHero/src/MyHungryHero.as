@@ -1,6 +1,6 @@
 package
 {
-	import com.croco2dMGE.CrocoBootStrap;
+	import com.croco2dMGE.bootStrap.CrocoBootStrap;
 	
 	public class MyHungryHero extends CrocoBootStrap
 	{
