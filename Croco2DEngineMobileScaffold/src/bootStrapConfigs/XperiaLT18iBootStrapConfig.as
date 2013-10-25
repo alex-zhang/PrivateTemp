@@ -8,7 +8,7 @@ package bootStrapConfigs
 		{
 			super(bootStrap);
 			
-			
+			launchImagePath = "assets/launImage854_480.jpg";
 		}
 	}
 }
