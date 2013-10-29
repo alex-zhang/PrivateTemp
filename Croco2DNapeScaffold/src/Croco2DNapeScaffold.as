@@ -2,7 +2,7 @@ package
 {
 	import com.croco2dMGE.bootStrap.CrocoBootStrap;
 	
-	import bootStrapConfigs.XperiaLT18iBootStrapConfig;
+	import bootStrapConfigs.CommonBootBootStrapConfig;
 	
 	public class Croco2DNapeScaffold extends CrocoBootStrap
 	{
@@ -13,7 +13,7 @@ package
 		
 		override protected function onBootStrapConfigInit():void
 		{
-			new XperiaLT18iBootStrapConfig(this);
+			new CommonBootBootStrapConfig(this);
 		}
 	}
 }
