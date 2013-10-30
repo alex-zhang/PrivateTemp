@@ -16,6 +16,7 @@ package screens
 	public class NapeScene extends CrocoScene
 	{
 		public static const GRAVITY:int = 600;
+		
 		public static const SCENE_WIDTH:int = 960 * 2;
 		public static const SCENE_HEIGHT:int = 640;
 		
@@ -35,7 +36,7 @@ package screens
 			napeSpace = new Space(Vec2.weak(0, GRAVITY));
 			
 			var floor:Body = new Body(BodyType.STATIC);
-			floor.shapes.add(new Polygon(Polygon.rect(50, SCENE_HEIGHT - 50, SCENE_WIDTH - 100, 1)));
+			floor.shapes.add(new Polygon(Polygon.rect(0, SCENE_HEIGHT - 2, SCENE_WIDTH, 1)));
 			floor.space = napeSpace;
 			
 			if(CrocoEngine.debug)
@@ -48,7 +49,7 @@ package screens
 			{
 				var box:Body = new Body(BodyType.DYNAMIC);
 				box.shapes.add(new Polygon(Polygon.box(16, 32)));
-				box.position.setxy((SCENE_WIDTH / 2), ((SCENE_HEIGHT - 50) - 32 * (i + 0.5)));
+				box.position.setxy(20, ((SCENE_HEIGHT - 50) - 32 * (i + 0.5)));
 				box.space = napeSpace;
 			}
 		}

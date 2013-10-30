@@ -1,5 +1,6 @@
 package bootStrapConfigs
 {
+	import com.croco2dMGE.CrocoEngine;
 	import com.croco2dMGE.bootStrap.CrocoBootStrap;
 	import com.croco2dMGE.bootStrap.CrocoBootStrapConfig;
 	
@@ -12,6 +13,8 @@ package bootStrapConfigs
 		public function CommonBootBootStrapConfig(bootStrap:CrocoBootStrap)
 		{
 			super(bootStrap);
+			
+			CrocoEngine.debug = true;
 			
 			screens = [
 				["MainScreen", [new MainScreen()]],
