@@ -1,7 +1,7 @@
 package screens
 {
 	import com.croco2dMGE.world.CrocoScreen;
-
+	
 	public class MainScreen extends CrocoScreen
 	{
 		public function MainScreen()

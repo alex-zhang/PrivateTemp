@@ -3,6 +3,8 @@ package screens
 	import com.croco2dMGE.CrocoEngine;
 	import com.croco2dMGE.world.CrocoScene;
 	
+	import flash.ui.Keyboard;
+	
 	import nape.geom.Vec2;
 	import nape.phys.Body;
 	import nape.phys.BodyType;
@@ -12,6 +14,7 @@ package screens
 	import nape.util.Debug;
 	
 	import starling.core.RenderSupport;
+	import starling.events.KeyboardEvent;
 
 	public class NapeScene extends CrocoScene
 	{
@@ -22,6 +25,7 @@ package screens
 		
 		public var napeSpace:Space;
 		public var napeSpaceDebug:Debug;
+		public var role:Body;
 
 		public function NapeScene()
 		{
@@ -36,7 +40,7 @@ package screens
 			napeSpace = new Space(Vec2.weak(0, GRAVITY));
 			
 			var floor:Body = new Body(BodyType.STATIC);
-			floor.shapes.add(new Polygon(Polygon.rect(0, SCENE_HEIGHT - 2, SCENE_WIDTH, 1)));
+			floor.shapes.add(new Polygon(Polygon.rect(0, SCENE_HEIGHT - 20, SCENE_WIDTH, 10)));
 			floor.space = napeSpace;
 			
 			if(CrocoEngine.debug)
@@ -45,12 +49,32 @@ package screens
 				CrocoEngine.crocoStarling.nativeOverlay.addChild(napeSpaceDebug.display);
 			}
 			
-			for (var i:int = 0; i < 16; i++) 
+			role = new Body(BodyType.DYNAMIC);
+			role.allowRotation = false;
+			role.shapes.add(new Polygon(Polygon.box(16, 32)));
+			role.position.setxy(100, 100);
+			role.space = napeSpace;
+			
+			CrocoEngine.starlingStage.addEventListener(KeyboardEvent.KEY_DOWN, stageKeyDownHandler);
+		}
+		
+		private function stageKeyDownHandler(event:KeyboardEvent):void
+		{
+			if(!role) return;
+			
+			switch(event.keyCode)
 			{
-				var box:Body = new Body(BodyType.DYNAMIC);
-				box.shapes.add(new Polygon(Polygon.box(16, 32)));
-				box.position.setxy(20, ((SCENE_HEIGHT - 50) - 32 * (i + 0.5)));
-				box.space = napeSpace;
+				case Keyboard.A:
+					role.velocity.x = -100;
+					break;
+				
+				case Keyboard.D:
+					role.velocity.x = 100;
+					break;
+				
+				case Keyboard.J://jump
+					role.velocity.y -= 500;
+					break;
 			}
 		}
 		
@@ -59,6 +83,8 @@ package screens
 			napeSpace.step(deltaTime);
 			
 			super.tick(deltaTime);
+			
+			trace(role.velocity.x, role.velocity.y);
 		}
 		
 		override public function draw(support:RenderSupport, parentAlpha:Number):void
